@@ -377,7 +377,7 @@
     \ifthenelse{\isundefined{\@position}}{}{\headerpositionstyle{\@position\\[\acvHeaderAfterPositionSkip]}}%
   \end{minipage}%
   \begin{minipage}[c]{\headerphotowidth}%
-    \ifthenelse{\equal{\@photoalign}{left}}{\raggedright\drawphoto}{}
+    \ifthenelse{\equal{\@photoalign}{right}}{\raggedright\drawphoto}{}
   \end{minipage}
 }
 
@@ -453,7 +453,8 @@
 }
 
 
-\newcommand{\timeline}[1]{
+\newcommand{\timeline}[2]{
+    % Usage: \makecvfooter{timeline-start}{timeline-end}
     % The timeline works by saving positions (A, A1, ...) in the aux file.
     % On a second pass, we can then draw the timeline in the middle of the two
     % columns (absolute positioning) using the positions we gathered.
@@ -504,7 +505,7 @@
     ]
         % We don't know how many sections exist: iterate from the first letter
         % to some upper-bound (e.g. +10).
-        \foreach \s[count=\i from 0] in {#1,...,G}{
+        \foreach \s[count=\i from 0] in {#1,...,#2}{
             % If the section exists, create a node `S0`
             \ifnum \zposy{\s0}>0
                 \node[section] (\s0) at \tikzpossection{\s0} {};
@@ -549,6 +550,21 @@
 %-------------------------------------------------------------------------------
 %               Section, Subsection (titles)
 %-------------------------------------------------------------------------------
+% Define a section for CV
+% Usage: \cvsection{<section-title>}
+\newcommand{\cvsidesection}[1]{%
+  \begin{tcolorbox}[colback=white, rounded corners=north, rounded corners=south, boxrule=0pt, colframe=white]
+    \sectionstyle{#1}
+  \end{tcolorbox}
+  \phantomsection
+  %\color{gray}\vhrulefill{0.9pt}
+  % Increase the sections counter (A3 -> B0)
+  \stepcounter{sections}
+  % Save the position of the section as 'A0' in the aux file
+  \zsavepos{\Alph{sections}\arabic{entries}}
+  \vspace{\acvSectionTopSkip}
+}
+
 % Define a section for CV
 % Usage: \cvsection{<section-title>}
 \newcommand{\cvsection}[1]{%
@@ -682,7 +698,11 @@
 %-------------------------------------------------------------------------------
 % Starts a new category of skills
 % Usage: \cvskill{<type>}{<skillset>}
-\newcommand*{\skillcategory}[1]{\skilltypestyle{#1}}
+\newcommand*{\skillcategory}[1]{
+\begin{tcolorbox}[colback=white, rounded corners, boxrule=0pt, colframe=white, top=0pt, bottom=0pt]
+  \skilltypestyle{#1}
+\end{tcolorbox}
+}
 \newenvironment{cvskills}{
   %\vspace{\acvSectionContentTopSkip}
   \vspace{-1.5mm}
@@ -708,6 +728,23 @@
 }
 
 % Environment for skills with tcolorbox
+\newtcolorbox{skillboxbig}{
+    colframe=lighttext,
+    colback=white,
+    tcbox raise base,
+    height=11pt,
+    width=3.10cm,
+    halign=center,
+    boxrule=0.4pt,
+    nobeforeafter,
+    on line,
+    top=0pt,
+    bottom=0pt,
+    left=-1pt,
+    right=-1pt,
+}
+
+% Environment for skills with tcolorbox
 \newtcolorbox{skillbox}{
     colframe=lighttext,
     colback=white,
@@ -722,6 +759,11 @@
     bottom=0pt,
     left=-1pt,
     right=-1pt,
+}
+
+\newcommand*{\skillbig}[1]{
+    \begin{skillboxbig}\skillsetstyle{#1}\end{skillboxbig}
+    %\skillsetstyle{#1}
 }
 
 \newcommand*{\skill}[1]{

@@ -12,9 +12,15 @@
 %----------------------------------------------------------------------------------------
 
 \documentclass[11pt, a4paper]{resume}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{eso-pic}
+\usepackage{tcolorbox}
 
 % Configure page margins with geometry
-\setlength{\sidemargin}{1.5cm}
+\setlength{\sidemargin}{1.2cm}
 \geometry{left=\sidemargin, top=1.5cm, right=\sidemargin, bottom=2cm, footskip=.5cm}
 
 \fontdir[fonts/] % Specify the location of the included fonts
@@ -34,29 +40,44 @@
 %          Header Information
 %----------------------------------------------------------------------------------------
 
-\name{John}{Hammond}
-\address{NW1 6XE, London, UK}
-\mobile{(+44) 0 00 00 00 00}
+\name{Pete}{Lesko}
+\address{Columbia, MD}
+\mobile{(+1) 555 NOT FAKE}
 
-\email{john.hammond@gmail.com}
-\github{jhgit}
-\linkedin{john-hammond}
+\email{your.email@gmail.com}
+\github{indubitablygregarious}
+\linkedin{pete-lesko-5109904}
+\photo[circle,edge,right]{mypic.png}
 
-\position{Software Engineer{\enskip\cdotp\enskip}Backend}
+\position{Platform Engineering Manager}
 %\quote{``Make the change that you want to see in the world."} % A quote or statement
 
-\makecvfooter{\today}{John Hammond~~~·~~~Resume}{\thepage} % Specify the letter footer with 3 arguments: (<left>, <center>, <right>), leave any of these blank if they are not needed
-
 %----------------------------------------------------------------------------------------
-
+%\rhead{\includegraphics[width=3cm]{pete.png}} % adjust the width as needed
+%\rhead{\raisebox{-102px}
+%    {\begin{tikzpicture}%
+%        \node[circle, draw=darkgray, line width=0.3mm, inner sep=1.2cm, fill overzoom image=pete.png] () {};
+%    \end{tikzpicture}}
+%} % adjust the width as needed
+% a nice blue stripe on the left of the page
+\AddToShipoutPictureBG{%
+\begin{tikzpicture}[overlay,remember picture]
+\shade[left color=white, right color=awesome] (current page.north west) rectangle ([xshift=2cm]current page.south west);
+\end{tikzpicture}
+}
 \begin{document}
 
 \makecvheader % Print the header
+\makecvfooter{\today}{Pete Lesko~~~·~~~Resume}{\thepage} % Specify the letter footer with 3 arguments: (<left>, <center>, <right>), leave any of these blank if they are not needed
+
 
 \begin{cvsummary}
+    \begin{tcolorbox}[colback=white, rounded corners, boxrule=0pt, colframe=white]
     %Software engineer with close to 4 years experience, mainly coding in Python. I care about code quality and writing readable, explicit code. I am currently experimenting with Rust on my free time to expand my skillset. I am looking for a role where I can be challenged and learn from industry experts.
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.
+    \end{tcolorbox}
 \end{cvsummary}
+\vspace{5mm}
 
 %\begin{center}
     %%\hline{\linewidth}
@@ -72,15 +93,11 @@
 \setlength{\columnsmargin}{0.5\sidemargin}
 \setlength{\timelinemargin}{0.5cm}
 
-\timeline{D} % draw the timeline starting from section B
-
 \begin{textblock*}{\leftcolumnwidth}(0pt, \headersmargin)
     \vspace{-2mm}
     \input{sections/contact.tex}
-    \vspace{3mm}
+    \vspace{1mm}
     \input{sections/skills.tex}
-    \vspace{3.5mm}
-    \input{sections/hobbies.tex}
 \end{textblock*}
 
 \begin{textblock*}
@@ -88,9 +105,9 @@
     (\leftcolumnwidth + \columnsmargin + 2\timelinemargin, \headersmargin)
     \vspace{-2mm}
     \input{sections/experience.tex}
-    \input{sections/education.tex}
-    \input{sections/projects.tex}
 \end{textblock*}
+
+\timeline{C}{C} % draw the timeline starting from section D to section D
 
 %----------------------------------------------------------------------------------------
 % Debug - Show lengths used in the document
@@ -105,5 +122,25 @@
     %\draw[arrow, thick] \pos{\leftcolumnwidth + \sidemargin}{6cm} -- \pos{\leftcolumnwidth + \sidemargin + \sidemargin}{6cm};
 %\end{tikzpicture}
 
+\newpage
+
+
+\begin{textblock*}{\leftcolumnwidth}(0pt, \headersmargin)
+    \vspace{-2mm}
+    \input{sections/hobbies.tex}
+\end{textblock*}
+
+% TODO this kills the dots but having a header on both pages would be nice
+%\makecvheader % Print the header
+
+\begin{textblock*}
+    {\paperwidth - 2\sidemargin - \leftcolumnwidth - \columnsmargin - 2\timelinemargin}
+    (\leftcolumnwidth + \columnsmargin + 2\timelinemargin, \headersmargin)
+    \input{sections/experience2.tex}
+    \input{sections/education.tex}
+    \input{sections/projects.tex}
+\end{textblock*}
+
+\timeline{E}{G} % draw the timeline starting from section E to section E
 
 \end{document}
