@@ -358,6 +358,12 @@
       \end{tikzpicture}
     }%
   }
+  \begin{tikzpicture}[overlay, remember picture]
+    \shade[left color=gray!20, right color=white, rounded corners=3pt]
+    ([yshift=-80pt,xshift=85pt]current page.north west)
+    rectangle ([yshift=-140pt,xshift=-180pt]current page.north east);
+  \end{tikzpicture}
+
   \newlength{\headertextwidth}
   \newlength{\headerphotowidth}
   \ifthenelse{\isundefined{\@photo}}{
