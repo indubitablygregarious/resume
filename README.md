@@ -4,7 +4,8 @@ reducing the resume to be a single page, and introducing two columns separated
 by a timeline with dots.
 
 Here's an example of the output:
-![resume-1](https://github.com/Slyces/resume/assets/22822015/532e6663-8bed-4b9f-bc7f-d74686b35d77)
+![resume-1](https://raw.githubusercontent.com/indubitablygregarious/resume/main/Screenshot%20from%202024-05-09%2000-24-58.png)
+![resume-2](https://raw.githubusercontent.com/indubitablygregarious/resume/main/Screenshot%20from%202024-05-09%2000-26-02.png)
 
 
 # Can I use this template?
