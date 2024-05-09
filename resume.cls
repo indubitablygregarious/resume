@@ -359,9 +359,9 @@
     }%
   }
   \begin{tikzpicture}[overlay, remember picture]
-    \shade[left color=gray!20, right color=white, rounded corners=3pt]
-    ([yshift=-80pt,xshift=85pt]current page.north west)
-    rectangle ([yshift=-140pt,xshift=-180pt]current page.north east);
+    \shade[left color=gray!20, right color=white, rounded corners=4pt] 
+    ([yshift=-60pt,xshift=34pt]current page.north west) 
+    rectangle ([yshift=-128pt,xshift=-405pt]current page.north east);
   \end{tikzpicture}
 
   \newlength{\headertextwidth}
@@ -559,10 +559,10 @@
 % Define a section for CV
 % Usage: \cvsection{<section-title>}
 \newcommand{\cvsidesection}[1]{%
-  \begin{tcolorbox}[colback=white, rounded corners=north, rounded corners=south, boxrule=0pt, colframe=white]
-    \sectionstyle{#1}
-  \end{tcolorbox}
-  \phantomsection
+\begin{tcolorbox}[enhanced, interior style={left color=gray!20, right color=white}, rounded corners=north, rounded corners=south, boxrule=0pt, colframe=white]
+  \sectionstyle{#1}
+\end{tcolorbox}
+\phantomsection
   %\color{gray}\vhrulefill{0.9pt}
   % Increase the sections counter (A3 -> B0)
   \stepcounter{sections}
