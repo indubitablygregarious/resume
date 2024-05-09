@@ -360,7 +360,7 @@
   }
   \begin{tikzpicture}[overlay, remember picture]
     \shade[left color=gray!20, right color=white, rounded corners=4pt] 
-    ([yshift=-60pt,xshift=34pt]current page.north west) 
+    ([yshift=-60pt]current page.north west) 
     rectangle ([yshift=-128pt,xshift=-405pt]current page.north east);
   \end{tikzpicture}
 
