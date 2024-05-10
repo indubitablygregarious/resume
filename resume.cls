@@ -358,10 +358,13 @@
       \end{tikzpicture}
     }%
   }
+%-------------------------------------------------------------------------------
+%               the gray to white stripe on the top of the page
+%-------------------------------------------------------------------------------
   \begin{tikzpicture}[overlay, remember picture]
     \shade[left color=gray!20, right color=white, rounded corners=4pt] 
-    ([yshift=-60pt]current page.north west) 
-    rectangle ([yshift=-128pt,xshift=-405pt]current page.north east);
+    ([yshift=-55pt]current page.north west) 
+    rectangle ([yshift=-106pt,xshift=-345pt]current page.north east);
   \end{tikzpicture}
 
   \newlength{\headertextwidth}
@@ -385,6 +388,7 @@
   \begin{minipage}[c]{\headerphotowidth}%
     \ifthenelse{\equal{\@photoalign}{right}}{\raggedright\drawphoto}{}
   \end{minipage}
+
 }
 
 
@@ -402,8 +406,8 @@
 %               Contacts
 %-------------------------------------------------------------------------------
 % Address
-\def\caddressicon{\headeraddressstyle{\icon{}}}
-\def\caddress{\headeraddressstyle{\@address}}
+\def\caddressicon{\headeraddressstyle{\href{https://maps.google.com/?\@address}{\icon{}}}}
+\def\caddress{\headeraddressstyle{\href{https://maps.google.com/?\@address}{\@address}}}
 % Mobile
 \def\cmobileicon{\headersocialstyle{\faMobile}}
 \def\cmobile{\headersocialstyle{\@mobile}}
