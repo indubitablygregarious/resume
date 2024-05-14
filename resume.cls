@@ -205,7 +205,7 @@
 % For fundamental structures
 \newcommand*{\headerfirstnamestyle}[1]{{\fontsize{32pt}{1em}\headerfontlight\color{graytext} #1}}
 \newcommand*{\headerlastnamestyle}[1]{{\fontsize{32pt}{1em}\headerfont\bfseries\color{text} #1}}
-\newcommand*{\headerpositionstyle}[1]{{\fontsize{17pt}{1em}\bodyfont\scshape\color{awesome} #1}}
+\newcommand*{\headerpositionstyle}[1]{{\fontsize{24pt}{1em}\bodyfont\scshape\color{awesome} #1}}
 %\newcommand*{\headeraddressstyle}[1]{{\fontsize{8pt}{1em}\headerfont\itshape\color{lighttext} #1}}
 %\newcommand*{\headersocialstyle}[1]{{\fontsize{6.8pt}{1em}\headerfont\color{text} #1}}
 \newcommand*{\headerquotestyle}[1]{{\fontsize{9pt}{1em}\bodyfont\itshape\color{darktext} #1}}
@@ -233,10 +233,10 @@
 \newcommand*{\subdescriptionstyle}[1]{{\fontsize{8pt}{1em}\bodyfontlight\upshape\color{text} #1}}
 
 % For elements of hobbies
-%\newcommand*{\hobbyiconstyle}[1]{{\fontsize{11.5pt}{1em}\bodyfont\color{text} #1}}
-%\newcommand*{\hobbiesstyle}[1]{{\fontsize{9.5pt}{1em}\bodyfont\color{text} #1}}
-\newcommand*{\hobbyiconstyle}[1]{\headericonstyle{#1}}
-\newcommand*{\hobbiesstyle}[1]{\headersocialstyle{#1}}
+\newcommand*{\hobbyiconstyle}[1]{{\fontsize{11.5pt}{1em}\bodyfont\color{text} #1}}
+\newcommand*{\hobbiesstyle}[1]{{\fontsize{7.5pt}{1em}\bodyfont\color{text} #1}}
+%\newcommand*{\hobbyiconstyle}[1]{\headericonstyle{#1}}
+%\newcommand*{\hobbiesstyle}[1]{\headersocialstyle{#1}}
 
 % For elements of skill
 \newcommand*{\skilltypestyle}[1]{{\fontsize{10pt}{1em}\bodyfont\bfseries\color{darktext} #1}}
@@ -292,8 +292,8 @@
 \newcommand*{\gitlab}[1]{\def\@gitlab{#1}}
 % Usage (optional): \stackoverflow{<so userid>}{<so username>}
 \newcommand*{\stackoverflow}[2]{\def\@stackoverflowid{#1}\def\@stackoverflowname{#2}}
-% Usage (optional): \linkedin{<linked-in-user>}
-\newcommand*{\linkedin}[1]{\def\@linkedinuser{#1}}
+% Usage (optional): \linkedin{<linked-in-user>}{display-name}
+\newcommand*{\linkedin}[2]{\def\@linkedinuser{#1}\def\@linkedindisplay{#2}}
 % Usage (optional): \twitter{<twitter handle>}
 \newcommand*{\twitter}[1]{\def\@twitter{#1}}
 % Usage (optional): \extrainfo{<extra informations>}
@@ -364,7 +364,7 @@
   \begin{tikzpicture}[overlay, remember picture]
     \shade[left color=gray!20, right color=white, rounded corners=4pt] 
     ([yshift=-55pt]current page.north west) 
-    rectangle ([yshift=-106pt,xshift=-345pt]current page.north east);
+    rectangle ([yshift=-108pt,xshift=-345pt]current page.north east);
   \end{tikzpicture}
 
   \newlength{\headertextwidth}
@@ -416,7 +416,7 @@
 \def\cgituser{\headersocialstyle{\href{https://github.com/\@github}{\@github}}}
 % Linkedin
 \def\clinkedinicon{\headersocialstyle{\href{https://www.linkedin.com/in/\@linkedinuser}{\faLinkedin}}}
-\def\clinkedinuser{\headersocialstyle{\href{https://www.linkedin.com/in/\@linkedinuser}{\@linkedinuser}}}
+\def\clinkedinuser{\headersocialstyle{\href{https://www.linkedin.com/in/\@linkedinuser}{\@linkedindisplay}}}
 % Email
 \def\cemailicon{\headersocialstyle{\href{mailto:\@email}{\faEnvelope}}}
 \def\cemail{\headersocialstyle{\href{mailto:\@email}{\@email}}}
@@ -617,7 +617,6 @@
 
 % Define an about me summary
 \newenvironment{cvsummary}{%
-  \fontsize{10pt}{1em}\bodyfontlight\upshape\color{text}
 }{ }
 
 % Define an environment for cventry
